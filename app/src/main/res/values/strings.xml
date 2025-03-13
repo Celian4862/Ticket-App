@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TicketApp</string>
+    <string name="hamburger_icon_desc">Hamburger icon</string>
+    <string name="icon_description">Menu item background</string>
+</resources>

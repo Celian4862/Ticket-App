@@ -2,9 +2,16 @@
     <string name="app_name">TicketApp</string>
     <string name="hamburger_icon_desc">Hamburger icon</string>
     <string name="icon_description">Menu item background</string>
-    <string name="search_hint">Search...</string>
+    <string name="search_hint">Search…</string>
     <string name="search_icon_content_description">Search</string>
     <string name="home_page_header">GET READY FOR YOUR HOLIDAYS!</string>
     <string name="profile_picture">Profile picture</string>
     <string name="greet_user">HI, ANNA!</string>
+    <string name="book_flight_btn">BOOK FLIGHT</string>
+    <string name="btn_label_back">X</string>
+    <string name="search_flight_header">SEARCH FLIGHT</string>
+    <string name="label_from">FROM</string>
+    <string name="label_departure">DEPARTURE</string>
+    <string name="label_to">TO</string>
+    <string name="label_return">RETURN</string>
 </resources>

@@ -68,27 +68,31 @@
             android:id="@+id/layout_from_to"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="75dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txt_from"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:labelFor="@+id/edit_txt_from"
                     android:text="@string/label_from" />
 
                 <EditText
                     android:id="@+id/edit_txt_from"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:autofillHints="origin" />
+                    android:padding="10dp"
+                    android:background="@color/white"
+                    android:autofillHints="origin"
+                    android:ems="5"
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
@@ -98,17 +102,20 @@
 
                 <TextView
                     android:id="@+id/txt_to"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:labelFor="@+id/edit_txt_to"
                     android:text="@string/label_to" />
 
                 <EditText
                     android:id="@+id/edit_txt_to"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:autofillHints="destination"/>
+                    android:padding="10dp"
+                    android:background="@color/white"
+                    android:autofillHints="destination"
+                    android:ems="5"
+                    android:inputType="text" />
             </LinearLayout>
         </LinearLayout>
 
@@ -121,20 +128,23 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="75dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
+                    android:id="@+id/txt_departure"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:labelFor="@+id/edit_txt_departure"
                     android:text="@string/label_departure" />
 
                 <EditText
                     android:id="@+id/edit_txt_departure"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@color/white"
+                    android:ems="5"
                     android:inputType="text"
                     android:autofillHints="departure_time"/>
             </LinearLayout>
@@ -145,16 +155,19 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="match_parent"
+                    android:id="@+id/txt_return"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:labelFor="@+id/edit_txt_return"
                     android:text="@string/label_return" />
 
                 <EditText
-                    android:id="@+id/editTextText8"
-                    android:layout_width="match_parent"
+                    android:id="@+id/edit_txt_return"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
+                    android:padding="10dp"
+                    android:background="@color/white"
+                    android:ems="5"
                     android:inputType="text"
                     android:autofillHints="return_time"/>
             </LinearLayout>

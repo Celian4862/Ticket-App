@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.GridView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
         GridView iconGridView = findViewById(R.id.iconGridView);
 
+        IconGridAdapter adapter = getIconGridAdapter();
+        iconGridView.setAdapter(adapter);
+    }
+
+    @NonNull
+    private IconGridAdapter getIconGridAdapter() {
         IconItem[] items = new IconItem[]{
                 new IconItem("Flight", R.drawable.ic_flight, SearchFlightActivity.class), // Replace with your actual drawable resource
                 new IconItem("Bus", R.drawable.ic_bus, BusActivity.class),
@@ -32,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 new IconItem("My Trips", R.drawable.ic_my_trips, MyTripsActivity.class),
                 new IconItem("Settings", R.drawable.ic_settings, SettingsActivity.class)
         };
-
-        // Set the adapter
-        IconGridAdapter adapter = new IconGridAdapter(this, items);
-        iconGridView.setAdapter(adapter);
+        return new IconGridAdapter(this, items);
     }
 }

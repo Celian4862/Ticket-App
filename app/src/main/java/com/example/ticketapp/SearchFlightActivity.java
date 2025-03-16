@@ -3,8 +3,10 @@ package com.example.ticketapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,11 +27,22 @@ public class SearchFlightActivity extends AppCompatActivity {
 
         Button back = findViewById(R.id.btn_back);
         Button book_flight = findViewById(R.id.btn_book_flight);
+        ListView list = findViewById(R.id.list_flights);
 
         book_flight.setOnClickListener(v -> {});
         back.setOnClickListener(v -> {
             Intent intent = new Intent(SearchFlightActivity.this, MainActivity.class);
             startActivity(intent);
+        });
+        FlightListAdapter adapter = getFlightListAdapter();
+        list.setAdapter(adapter);
+    }
+
+    @NonNull
+    private FlightListAdapter getFlightListAdapter() {
+        return new FlightListAdapter(this, new FlightItem[]{
+                new FlightItem("Lorem Ipsum Airlines", 945, 1235, "432GH4", 190, "ECONOMY", FlightDetailsActivity.class),
+                new FlightItem("Lorem Ipsum Airlines", 2125, 2330, "563GH4", 115, "ECONOMY", FlightDetailsActivity.class)
         });
     }
 }

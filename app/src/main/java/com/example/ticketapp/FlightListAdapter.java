@@ -1,6 +1,7 @@
 package com.example.ticketapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,11 @@ public class FlightListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.flight_list_layout, parent, false);
         }
         FlightItem item = items[position];
+        convertView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, item.getTargetActivity());
+            context.startActivity(intent);
+        });
 
-        return null;
+        return convertView;
     }
 }

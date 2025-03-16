@@ -1,9 +1,9 @@
 package com.example.ticketapp;
 
 public class IconItem {
-    private String text;
-    private int imageResId;
-    private Class<?> targetActivity;
+    private final String text;
+    private final int imageResId;
+    private final Class<?> targetActivity;
 
     public IconItem(String text, int imageResId, Class<?> targetActivity) {
         this.text = text;

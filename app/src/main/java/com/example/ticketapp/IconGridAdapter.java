@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class IconGridAdapter extends BaseAdapter {
-    private Context context;
-    private IconItem[] items;
+    private final Context context;
+    private final IconItem[] items;
 
     public IconGridAdapter(Context context, IconItem[] items) {
         this.context = context;

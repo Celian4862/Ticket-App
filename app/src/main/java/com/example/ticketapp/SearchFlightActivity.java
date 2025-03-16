@@ -11,7 +11,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class SearchFlightActivity extends AppCompatActivity {
-    private Button back, book_flight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +23,8 @@ public class SearchFlightActivity extends AppCompatActivity {
             return insets;
         });
 
-        back = findViewById(R.id.btn_back);
-        book_flight = findViewById(R.id.btn_book_flight);
+        Button back = findViewById(R.id.btn_back);
+        Button book_flight = findViewById(R.id.btn_book_flight);
 
         book_flight.setOnClickListener(v -> {});
         back.setOnClickListener(v -> {

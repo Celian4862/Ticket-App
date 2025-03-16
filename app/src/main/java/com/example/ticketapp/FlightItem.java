@@ -5,16 +5,14 @@ public class FlightItem {
     private final int arrival_time, departure_time;
     private final String flight_number;
     private final double price;
-    private final String seat_tier;
     private final Class<?> targetActivity;
 
-    public FlightItem(String airline_name, int arrival_time, int departure_time, String flight_number, double price, String seat_tier, Class<?> targetActivity) {
+    public FlightItem(String airline_name, int arrival_time, int departure_time, String flight_number, double price, Class<?> targetActivity) {
         this.airline_name = airline_name;
         this.arrival_time = arrival_time;
         this.departure_time = departure_time;
         this.flight_number = flight_number;
         this.price = price;
-        this.seat_tier = seat_tier;
         this.targetActivity = targetActivity;
     }
 
@@ -36,10 +34,6 @@ public class FlightItem {
 
     public double getPrice() {
         return price;
-    }
-
-    public String getSeat_tier() {
-        return seat_tier;
     }
 
     public Class<?> getTargetActivity() {

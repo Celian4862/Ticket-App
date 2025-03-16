@@ -41,8 +41,8 @@ public class SearchFlightActivity extends AppCompatActivity {
     @NonNull
     private FlightListAdapter getFlightListAdapter() {
         return new FlightListAdapter(this, new FlightItem[]{
-                new FlightItem("Lorem Ipsum Airlines", 945, 1235, "432GH4", 190, "ECONOMY", FlightDetailsActivity.class),
-                new FlightItem("Lorem Ipsum Airlines", 2125, 2330, "563GH4", 115, "ECONOMY", FlightDetailsActivity.class)
+                new FlightItem("Lorem Ipsum Airlines", 945, 1235, "432GH4", 190, FlightDetailsActivity.class),
+                new FlightItem("Lorem Ipsum Airlines", 2125, 2330, "563GH4", 115, FlightDetailsActivity.class)
         });
     }
 }

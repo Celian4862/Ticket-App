@@ -3,7 +3,7 @@
     <string name="hamburger_icon_desc">Hamburger icon</string>
     <string name="icon_description">Menu item background</string>
     <string name="search_hint">Search…</string>
-    <string name="search_icon_content_description">Search</string>
+    <string name="search">Search</string>
     <string name="home_page_header">GET READY FOR YOUR HOLIDAYS!</string>
     <string name="profile_picture">Profile picture</string>
     <string name="greet_user">HI, ANNA!</string>

@@ -54,10 +54,10 @@ public class FlightListAdapter extends BaseAdapter {
         airline.setText(item.getAirline_name());
         destination.setText(item.getDestination());
         duration.setText(calculateDuration(int_start_time, int_end_time));
-        end_time.setText(String.format(new Locale("en"), "%d:%d", int_end_time / 100, int_end_time % 100));
+        end_time.setText(String.format(new Locale("en"), "%2d:%02d", int_end_time / 100, int_end_time % 100));
         origin.setText(item.getOrigin());
         price.setText(String.format(new Locale("en"), "$%.2f", item.getPrice()));
-        start_time.setText(String.format(new Locale("en"), "%d:%d", int_start_time / 100, int_start_time % 100));
+        start_time.setText(String.format(new Locale("en"), "%2d:%02d", int_start_time / 100, int_start_time % 100));
 
         convertView.setOnClickListener(v -> {
             Intent intent = new Intent(context, item.getTargetActivity());

@@ -42,7 +42,11 @@ public class SearchFlightActivity extends AppCompatActivity {
     private FlightListAdapter getFlightListAdapter() {
         return new FlightListAdapter(this, new FlightItem[]{
                 new FlightItem("Lorem Ipsum Airlines", 1235, 945, "NY", "432GH4", "MAD", 190, FlightDetailsActivity.class),
-                new FlightItem("Lorem Ipsum Airlines", 2330, 2125, "NY", "563GH4", "MAD", 115, FlightDetailsActivity.class)
+                new FlightItem("Lorem Ipsum Airlines", 2330, 2125, "NY", "563GH4", "MAD", 115, FlightDetailsActivity.class),
+                new FlightItem("Cathay Pacific", 1130, 800, "CEB", "CX925", "HKG", 300, FlightListAdapter.class),
+                new FlightItem("Cathay Pacific", 1530, 1200, "HKG", "CX922", "CEB", 300, FlightListAdapter.class),
+                new FlightItem("Philippines Air Asia", 340, 220, "MNL", "123456", "CEB", 58.47, FlightListAdapter.class),
+                new FlightItem("Philippines Air Asia", 1910, 1745, "CEB", "654321", "MNL", 58.47, FlightListAdapter.class)
         });
     }
 }

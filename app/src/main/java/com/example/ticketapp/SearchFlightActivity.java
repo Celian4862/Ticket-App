@@ -33,10 +33,10 @@ public class SearchFlightActivity extends AppCompatActivity {
         FlightItem[] items_all = new FlightItem[]{
                         new FlightItem("Lorem Ipsum Airlines", 1235, 945, "NY", "432GH4", "MAD", 190, FlightDetailsActivity.class),
                         new FlightItem("Lorem Ipsum Airlines", 2330, 2125, "NY", "563GH4", "MAD", 115, FlightDetailsActivity.class),
-                        new FlightItem("Cathay Pacific", 1130, 800, "CEB", "CX925", "HKG", 300, FlightListAdapter.class),
-                        new FlightItem("Cathay Pacific", 1530, 1200, "HKG", "CX922", "CEB", 300, FlightListAdapter.class),
-                        new FlightItem("Philippines Air Asia", 340, 220, "MNL", "123456", "CEB", 58.47, FlightListAdapter.class),
-                        new FlightItem("Philippines Air Asia", 1910, 1745, "CEB", "654321", "MNL", 58.47, FlightListAdapter.class)
+                        new FlightItem("Cathay Pacific", 1130, 800, "CEB", "CX925", "HKG", 300, FlightDetailsActivity.class),
+                        new FlightItem("Cathay Pacific", 1530, 1200, "HKG", "CX922", "CEB", 300, FlightDetailsActivity.class),
+                        new FlightItem("Philippines Air Asia", 340, 220, "MNL", "123456", "CEB", 58.47, FlightDetailsActivity.class),
+                        new FlightItem("Philippines Air Asia", 1910, 1745, "CEB", "654321", "MNL", 58.47, FlightDetailsActivity.class)
                 };
         ListView list = findViewById(R.id.list_flights);
         Button search_flight = findViewById(R.id.btn_search);
@@ -65,7 +65,8 @@ public class SearchFlightActivity extends AppCompatActivity {
                 return;
             }
 
-            int i, idx_count = 0, item_count = 0;
+            int i, item_count = 0;
+            int[] idx = new int[items_all.length];
             for (i = 0; i < items_all.length; i++) {
                 int j, str_dpt_count, str_rtn_count;
                 for (j = str_dpt_count = 0; j < str_dpt.length(); j++) {
@@ -85,18 +86,15 @@ public class SearchFlightActivity extends AppCompatActivity {
                         Objects.equals(items_all[i].getOrigin(), str_from) &&
                         Objects.equals(items_all[i].getArrival_time(), str_rtn_count) &&
                         Objects.equals(items_all[i].getDestination(), str_to)) {
-                    item_count++;
-                    idx_count *= 10;
-                    idx_count += i;
+                    idx[item_count++] = i;
                 }
             }
 
             final FlightItem[] items = new FlightItem[item_count];
 
-            i = 0;
-            while (idx_count > 0) {
-                items[i] = items_all[idx_count % 10];
-                idx_count /= 10;
+            while (item_count > 0) {
+                item_count--;
+                items[item_count] = items_all[idx[item_count]];
             }
 
             FlightListAdapter adapter = getFlightListAdapter(items);

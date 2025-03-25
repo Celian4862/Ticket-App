@@ -13,6 +13,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 public class SearchFlightActivity extends AppCompatActivity {
@@ -30,14 +36,30 @@ public class SearchFlightActivity extends AppCompatActivity {
 
         Button back = findViewById(R.id.btn_back);
         Button book_flight = findViewById(R.id.btn_book_flight);
-        FlightItem[] items_all = new FlightItem[]{
-                        new FlightItem("Lorem Ipsum Airlines", 1235, 945, "NY", "432GH4", "MAD", 190, FlightDetailsActivity.class),
-                        new FlightItem("Lorem Ipsum Airlines", 2330, 2125, "NY", "563GH4", "MAD", 115, FlightDetailsActivity.class),
-                        new FlightItem("Cathay Pacific", 1130, 800, "CEB", "CX925", "HKG", 300, FlightDetailsActivity.class),
-                        new FlightItem("Cathay Pacific", 1530, 1200, "HKG", "CX922", "CEB", 300, FlightDetailsActivity.class),
-                        new FlightItem("Philippines Air Asia", 340, 220, "MNL", "123456", "CEB", 58.47, FlightDetailsActivity.class),
-                        new FlightItem("Philippines Air Asia", 1910, 1745, "CEB", "654321", "MNL", 58.47, FlightDetailsActivity.class)
-                };
+
+        FlightItem[] items_all = null;
+        try {
+            JSONObject object = new JSONObject(loadJSONFromAssets());
+            JSONArray jsonArray = object.getJSONArray("flights");
+            items_all = new FlightItem[jsonArray.length()];
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject flights = jsonArray.getJSONObject(i);
+                items_all[i] = new FlightItem(
+                        flights.getString("airline name"),
+                        flights.getInt("arrival time"),
+                        flights.getInt("departure time"),
+                        flights.getString("destination"),
+                        flights.getString("flight number"),
+                        flights.getString("origin"),
+                        flights.getDouble("price"),
+                        FlightDetailsActivity.class
+                );
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         ListView list = findViewById(R.id.list_flights);
         Button search_flight = findViewById(R.id.btn_search);
 
@@ -46,6 +68,7 @@ public class SearchFlightActivity extends AppCompatActivity {
             Intent intent = new Intent(SearchFlightActivity.this, MainActivity.class);
             startActivity(intent);
         });
+        FlightItem[] finalItems_all = items_all;
         search_flight.setOnClickListener(v -> {
             EditText edit_departure = findViewById(R.id.edit_txt_departure),
                     edit_from = findViewById(R.id.edit_txt_from),
@@ -60,14 +83,14 @@ public class SearchFlightActivity extends AppCompatActivity {
                     str_from.isEmpty() &&
                     str_to.isEmpty() &&
                     str_rtn.isEmpty()) {
-                FlightListAdapter adapter = getFlightListAdapter(items_all);
+                FlightListAdapter adapter = getFlightListAdapter(finalItems_all);
                 list.setAdapter(adapter);
                 return;
             }
 
             int i, item_count = 0;
-            int[] idx = new int[items_all.length];
-            for (i = 0; i < items_all.length; i++) {
+            int[] idx = new int[finalItems_all.length];
+            for (i = 0; i < finalItems_all.length; i++) {
                 int j, str_dpt_count, str_rtn_count;
                 for (j = str_dpt_count = 0; j < str_dpt.length(); j++) {
                     if (str_dpt.charAt(j) != ':') {
@@ -82,10 +105,10 @@ public class SearchFlightActivity extends AppCompatActivity {
                         str_rtn_count += str_rtn.charAt(j) - '0';
                     }
                 }
-                if (Objects.equals(items_all[i].getDeparture_time(), str_dpt_count) &&
-                        Objects.equals(items_all[i].getOrigin(), str_from) &&
-                        Objects.equals(items_all[i].getArrival_time(), str_rtn_count) &&
-                        Objects.equals(items_all[i].getDestination(), str_to)) {
+                if (Objects.equals(finalItems_all[i].getDeparture_time(), str_dpt_count) &&
+                        Objects.equals(finalItems_all[i].getOrigin(), str_from) &&
+                        Objects.equals(finalItems_all[i].getArrival_time(), str_rtn_count) &&
+                        Objects.equals(finalItems_all[i].getDestination(), str_to)) {
                     idx[item_count++] = i;
                 }
             }
@@ -94,7 +117,7 @@ public class SearchFlightActivity extends AppCompatActivity {
 
             while (item_count > 0) {
                 item_count--;
-                items[item_count] = items_all[idx[item_count]];
+                items[item_count] = finalItems_all[idx[item_count]];
             }
 
             FlightListAdapter adapter = getFlightListAdapter(items);
@@ -107,5 +130,22 @@ public class SearchFlightActivity extends AppCompatActivity {
     @NonNull
     private FlightListAdapter getFlightListAdapter(FlightItem[] items) {
         return new FlightListAdapter(this, items);
+    }
+
+    private String loadJSONFromAssets() {
+        String json = null;
+
+        try {
+            InputStream is = getAssets().open("data.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

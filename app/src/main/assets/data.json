@@ -1,0 +1,58 @@
+{
+  "flights": [
+    {
+      "airline name": "Lorem Ipsum Airlines",
+      "arrival time": 1235,
+      "departure time": 945,
+      "destination": "NY",
+      "flight number": "432GH4",
+      "origin": "MAD",
+      "price": 190
+    },
+    {
+      "airline name": "Lorem Ipsum Airlines",
+      "arrival time": 2330,
+      "departure time": 2125,
+      "destination": "NY",
+      "flight number": "563GH4",
+      "origin": "MAD",
+      "price": 115
+    },
+    {
+      "airline name": "Cathay Pacific",
+      "arrival time": 1130,
+      "departure time": 800,
+      "destination": "CEB",
+      "flight number": "CX925",
+      "origin": "HKG",
+      "price": 300
+    },
+    {
+      "airline name": "Cathay Pacific",
+      "arrival time": 1530,
+      "departure time": 1200,
+      "destination": "HKG",
+      "flight number": "CX922",
+      "origin": "CEB",
+      "price": 300
+    },
+    {
+      "airline name": "Philippines Air Asia",
+      "arrival time": 340,
+      "departure time": 220,
+      "destination": "MNL",
+      "flight number": "123456",
+      "origin": "CEB",
+      "price": 58.47
+    },
+    {
+      "airline name": "Philippines Air Asia",
+      "arrival time": 1910,
+      "departure time": 1745,
+      "destination": "CEB",
+      "flight number": "654321",
+      "origin": "MNL",
+      "price": 58.47
+    }
+  ]
+}
